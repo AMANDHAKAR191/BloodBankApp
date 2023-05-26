@@ -25,6 +25,7 @@ import androidx.constraintlayout.compose.Dimension
 import com.example.bloodbankapp.ui.theme.BloodBankAppTheme
 
 class WelcomeActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -98,7 +99,7 @@ class WelcomeActivity : ComponentActivity() {
                 Text(text = "Sign In")
             }
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = { },
                 modifier = Modifier
                     .layoutId("outlinedButtonCreateAccount")
                     .padding(start = 60.dp, end = 60.dp)
@@ -106,7 +107,7 @@ class WelcomeActivity : ComponentActivity() {
                 Text(text = "Create Account")
             }
             TextButton(
-                onClick = { /*TODO*/ },
+                onClick = { },
                 modifier = Modifier.layoutId("textButtonLearnMore")
             ) {
                 Text(text = "Learn More")
