@@ -1,5 +1,7 @@
 package com.plcoding.composegooglesignincleanarchitecture.presentation.sign_in
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -13,6 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
@@ -23,6 +29,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.core.content.ContextCompat.startActivity
+import com.example.bloodbankapp.PinLockActivity
 import com.example.bloodbankapp.R
 import com.example.bloodbankapp.SecondActivity
 
@@ -84,6 +91,9 @@ fun SignInScreen(
             .fillMaxSize()
             .padding(all = 5.dp)
     ) {
+        var openPinLockScreen by remember{
+            mutableStateOf(false)
+        }
         Image(
             painter = painterResource(id = R.drawable.imge_blood_drop),
             contentDescription = "Welcome image",
@@ -98,7 +108,7 @@ fun SignInScreen(
             Text(text = "Sign In")
         }
         OutlinedButton(
-            onClick = { /*TODO*/ },
+            onClick = { openPinLockScreen = true},
             modifier = Modifier
                 .layoutId("outlinedButtonCreateAccount")
                 .padding(start = 60.dp, end = 60.dp)
@@ -117,16 +127,18 @@ fun SignInScreen(
         }, modifier = Modifier.layoutId("textButtonSkipNow")) {
             Text(text = "Skip Now")
         }
+        if (openPinLockScreen){
+           openPinLockScreen(
+                context = context
+            )
+        }
 
     }
-//    Box(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(16.dp),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Button(onClick = onSignInClick) {
-//            Text(text = "Sign in")
-//        }
-//    }
+}
+
+@Composable
+fun openPinLockScreen(context:Context){
+    val intent = Intent(context, PinLockActivity::class.java)
+    val bundle = Bundle()
+    startActivity(context, intent, bundle)
 }
