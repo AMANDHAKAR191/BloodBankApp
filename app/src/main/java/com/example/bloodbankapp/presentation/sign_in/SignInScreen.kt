@@ -1,10 +1,7 @@
 package com.plcoding.composegooglesignincleanarchitecture.presentation.sign_in
 
-import android.content.Intent
-import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -13,7 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalContext
@@ -22,14 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
-import androidx.core.content.ContextCompat.startActivity
 import com.example.bloodbankapp.R
-import com.example.bloodbankapp.SecondActivity
 
 @Composable
 fun SignInScreen(
     state: SignInState,
-    onSignInClick: () -> Unit
+    onSignInClick: () -> Unit,
+    onSkipNowClick: () -> Unit
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = state.signInError) {
@@ -111,22 +106,9 @@ fun SignInScreen(
         ) {
             Text(text = "Learn More")
         }
-        TextButton(onClick = {
-//            val intent = Intent(context, SecondActivity::class.java)
-//            startActivity(context, intent, Bundle())
-        }, modifier = Modifier.layoutId("textButtonSkipNow")) {
+        TextButton(onClick = onSkipNowClick, modifier = Modifier.layoutId("textButtonSkipNow")) {
             Text(text = "Skip Now")
         }
 
     }
-//    Box(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(16.dp),
-//        contentAlignment = Alignment.Center
-//    ) {
-//        Button(onClick = onSignInClick) {
-//            Text(text = "Sign in")
-//        }
-//    }
 }
