@@ -1,6 +1,5 @@
 package com.example.bloodbankapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -46,15 +45,11 @@ class PinLockActivity : ComponentActivity() {
 
     private fun onPinCreated() {
         Toast.makeText(this@PinLockActivity, "Pin created successfully", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this@PinLockActivity, DashBoardActivity::class.java)
-        startActivity(intent)
         finish()
     }
 
     private fun onPinMatched() {
         Toast.makeText(this@PinLockActivity, "Pin matched", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this@PinLockActivity, DashBoardActivity::class.java)
-        startActivity(intent)
         finish()
     }
 

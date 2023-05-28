@@ -1,6 +1,5 @@
 package com.example.bloodbankapp
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -330,8 +329,7 @@ class SecondActivity : ComponentActivity() {
             }
             Button(
                 onClick = {
-                    val intent = Intent(this@SecondActivity, DashBoardActivity::class.java)
-                    startActivity(intent)
+                    finish()
                 },
                 modifier = Modifier
                     .layoutId("buttonSubmit")
