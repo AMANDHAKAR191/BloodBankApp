@@ -4,4 +4,5 @@
     <string name="title_activity_third">ThirdActivity</string>
     <string name="web_client_id">613644698170-6hcenps4j8cld56cg666pq7fipc5h8t7.apps.googleusercontent.com</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_pin_lock">PinLockActivity</string>
 </resources>
